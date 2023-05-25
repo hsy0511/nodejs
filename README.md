@@ -1,5 +1,5 @@
 # nodejs
-강의 : 생할코딩 
+강의 : 생활코딩 
 
 url : https://www.youtube.com/playlist?list=PLuHgQVnccGMA9QQX5wqj6ThK7t2tsGxjm
 
