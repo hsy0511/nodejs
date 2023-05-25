@@ -91,7 +91,7 @@ number는 숫자 데이터 타입이다.
 
 숫자 데이터 타입은 그냥 아무런 표시없이 사용할 수 있다.
 - 더하기 연산자
-```java
+```javascript
 console.log(1+1);
 ```
 ![image](https://github.com/hsy0511/nodejs/assets/104752580/9bb4890c-73e6-49d8-a067-02c09c101f2b)
@@ -103,13 +103,13 @@ console.log(4-1);
 ![image](https://github.com/hsy0511/nodejs/assets/104752580/68caffdb-bd1a-4fa7-91d1-2067b4348a19)
 
 - 곱하기 연산자
-```java
+```javascript
 console.log(2*2);
 ```
 ![image](https://github.com/hsy0511/nodejs/assets/104752580/c700066c-ef7f-4dd9-b4cd-09a6686a55b1)
 
 - 나누기 연산자
-```java
+```javascript
 console.log(10/2);
 ```
 ![image](https://github.com/hsy0511/nodejs/assets/104752580/25e92fa4-7ba3-4c03-90d2-e5903bdaea23)
@@ -119,19 +119,19 @@ String은 문자 데이터 타입이다.
 
 문자 데이터 타입을 사용할 때는 ''와 ""를 사용하는데 '로 시작하면 '로 끝내야하고 "로 시작하면 "로 끝내야한다.
 - 문자열 출력
-```java
+```javascript
 console.log('hello world!!')
 ```
 ![image](https://github.com/hsy0511/nodejs/assets/104752580/55b5848e-33c9-4d84-ab80-ac4ebcfeec87)
 
 - 결합연산자
-```java
+```javascript
 console.log('1'+'1');
 ```
 ![image](https://github.com/hsy0511/nodejs/assets/104752580/8e6d3899-c817-4798-b87e-f7bb34919a9e)
 
 - 글자 수 세기
-```java
+```javascript
 console.log('hello world!!'.length);
 ```
 ![image](https://github.com/hsy0511/nodejs/assets/104752580/89b2fcf9-54fb-412a-b8e1-ec7927f280b1)
@@ -139,7 +139,7 @@ console.log('hello world!!'.length);
 ## 제 8강 javascript 문법 - 변수의 형식
 변수는 valiable을 줄여서 var 형태로 사용한다.
 - 변수선언 및 출력
-```java
+```javascript
 var a = 1;
 console.log(a);
 var h = 'hello world';
@@ -150,7 +150,7 @@ console.log(h);
 ## 제 9강 javascript 문법 - 변수의 활용
 변수를 사용하여 문자열을 바꿀 수 있다.
 - 문자열 연결하기
-```java
+```javascript
 var name = 'hello';
 var hw = name + ' world!!';
 console.log(hw);
@@ -162,7 +162,7 @@ console.log(hw);
 
 사용 방법은 문자열 시작과 끝을 ``로 사용한다.
 - 일반 줄 바꿈
-```java
+```javascript
 var name = 'hello';
 var hw = name + '\n world!!';
 console.log(hw);
@@ -170,7 +170,7 @@ console.log(hw);
 ![image](https://github.com/hsy0511/nodejs/assets/104752580/3fe8dcec-f44c-44eb-ad97-70744e8fd086)
 
 - template literal 줄 바꿈
-```java
+```javascript
 var hw = name + `
  world!!`;
 console.log(hw);
