@@ -86,3 +86,12 @@ https://opentutorials.org/module/3549/21032 사이트에 들어간다.
 ![image](https://github.com/hsy0511/nodejs/assets/104752580/ac290446-5f43-4680-a9d7-e4c38c803431)
 
 - 웹서버 생성완료
+## 제 6강 javascript 문법 - number data type
+
+## 제 7강 javascript 문법 - String
+
+## 제 8강 javascript 문법 - 변수의 형식
+
+## 제 9강 javascript 문법 - 변수의 활용
+
+## 제 10강 javascript 문법 - Template Literal
