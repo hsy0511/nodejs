@@ -97,7 +97,7 @@ console.log(1+1);
 ![image](https://github.com/hsy0511/nodejs/assets/104752580/9bb4890c-73e6-49d8-a067-02c09c101f2b)
 
 - 빼기 연산자
-```java
+```javascript
 console.log(4-1);
 ```
 ![image](https://github.com/hsy0511/nodejs/assets/104752580/68caffdb-bd1a-4fa7-91d1-2067b4348a19)
