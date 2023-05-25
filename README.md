@@ -86,12 +86,109 @@ https://opentutorials.org/module/3549/21032 사이트에 들어간다.
 ![image](https://github.com/hsy0511/nodejs/assets/104752580/ac290446-5f43-4680-a9d7-e4c38c803431)
 
 - 웹서버 생성완료
-## 제 6강 javascript 문법 - number data type
+## 제 6강 javascript 문법 - number
+number는 숫자 데이터 타입이다.
+
+숫자 데이터 타입은 그냥 아무런 표시없이 사용할 수 있다.
+- 더하기 연산자
+```java
+console.log(1+1);
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/9bb4890c-73e6-49d8-a067-02c09c101f2b)
+
+- 빼기 연산자
+```java
+console.log(4-1);
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/68caffdb-bd1a-4fa7-91d1-2067b4348a19)
+
+- 곱하기 연산자
+```java
+console.log(2*2);
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/c700066c-ef7f-4dd9-b4cd-09a6686a55b1)
+
+- 나누기 연산자
+```java
+console.log(10/2);
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/25e92fa4-7ba3-4c03-90d2-e5903bdaea23)
 
 ## 제 7강 javascript 문법 - String
+String은 문자 데이터 타입이다.
+
+문자 데이터 타입을 사용할 때는 ''와 ""를 사용하는데 '로 시작하면 '로 끝내야하고 "로 시작하면 "로 끝내야한다.
+- 문자열 출력
+```java
+console.log('hello world!!')
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/55b5848e-33c9-4d84-ab80-ac4ebcfeec87)
+
+- 결합연산자
+```java
+console.log('1'+'1');
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/8e6d3899-c817-4798-b87e-f7bb34919a9e)
+
+- 글자 수 세기
+```java
+console.log('hello world!!'.length);
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/89b2fcf9-54fb-412a-b8e1-ec7927f280b1)
 
 ## 제 8강 javascript 문법 - 변수의 형식
+변수는 valiable을 줄여서 var 형태로 사용한다.
+- 변수선언 및 출력
+```java
+var a = 1;
+console.log(a);
+var h = 'hello world';
+console.log(h);
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/30355c62-adbf-4ce9-877e-ad6de4e9b4f2)
 
 ## 제 9강 javascript 문법 - 변수의 활용
+변수를 사용하여 문자열을 바꿀 수 있다.
+- 문자열 연결하기
+```java
+var name = 'hello';
+var hw = name + ' world!!';
+console.log(hw);
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/70fde42c-429c-4d82-b796-ff7cc87949cc)
 
-## 제 10강 javascript 문법 - Template Literal
+## 제 10강 javascript 문법 - Template Literal(내장된 표현식을 허용하는 문자열 데이터)
+문자열을 줄 바꿈할 때 \n을 사용하는데 \n을 대신에서 사용할 수 있음.
+
+사용 방법은 문자열 시작과 끝을 ``로 사용한다.
+- 일반 줄 바꿈
+```java
+var name = 'hello';
+var hw = name + '\n world!!';
+console.log(hw);
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/3fe8dcec-f44c-44eb-ad97-70744e8fd086)
+
+- template literal 줄 바꿈
+```java
+var hw = name + `
+ world!!`;
+console.log(hw);
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/3bed640c-a93f-41e3-93d4-0c4f58e657a7)
+
+그리고 template literal을 사용할 때 표현식 삽입이라는걸 할 수 있다.
+
+표현식 삽입은 ${} 형태로 사용하고, ${} 사이에 변수나 연산 등을 삽입할 수 있다. 
+- 표현식 삽입
+```java
+var a = 1000;
+var b = 2000;
+var c = 20000;
+var d = `나는 ${c}원을 가지고 있다.
+사과 하나에 ${a}원 이고 배 하나에 ${b}원이다.
+사과 2개와 배 5개를 구매해서 ${(a*2) + (b*5)}원을 사용했다.
+남은 돈은 ${20000 - ((a*2) + (b*5))}원이다.`
+console.log(d);
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/97d08b21-c7b5-4b99-97ef-7364576592a1)
