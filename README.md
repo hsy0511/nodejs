@@ -355,3 +355,44 @@ function(err, data)에서 err는 에러가 발생했을 경우에 err을 나타�
 
 data는 콜백 함수이므로 실행할 때 사용하는 코드이다.
 ## 제 15강 app 제작 - 파일을 이용해 본문 구현
+- 파일 읽기 기능을 통해서 본문 구현하기
+
+html, css, javascript의 본문을 다른 폴더에 파일로 저장한다. 
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/73ed0687-e835-493d-8ff7-0e030f18e92b)
+
+그리고 main.js 파일에서 파일 읽기 기능을 사용하여 본문 파일들을 읽어 드린다.
+
+```javascript
+fs.readFile(`data/${queryData.id}`, 'utf-8', function(err, data){
+    var template = `
+      <!doctype html>
+    <html>
+    <head>
+      <title>WEB1 - ${title}</title>
+      <meta charset="utf-8">
+    </head>
+    <body>
+     <h1><a href="/">WEB</a></h1>
+     <ul>
+     <li><a href="/?id=HTML">HTML</a></li>
+     <li><a href="/?id=CSS">CSS</a></li>
+     <li><a href="/?id=JavaScript">JavaScript</a></li>
+      </ul>
+      <h2>${title}</h2>
+      <p>${data}</p>
+    </body>
+    </html>
+    `;
+    response.end(template);
+  })
+```
+
+data 폴더 안에서 쿼리 스트링을 utf-8 형태로 읽어 드린다.
+
+그리고 본문에 ${data}를 넣어서 쿼리 스트링 마다 본문이 다르게 나오게 한다.
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/85591d37-f1c5-40e6-a02a-abc6f9073621)
+![image](https://github.com/hsy0511/nodejs/assets/104752580/c89ab869-5271-424d-aa61-81952b52c1aa)
+![image](https://github.com/hsy0511/nodejs/assets/104752580/15c5426a-4e7b-41e4-a3d3-cf03abe3e3dc)
+
