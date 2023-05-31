@@ -192,3 +192,166 @@ var d = `나는 ${c}원을 가지고 있다.
 console.log(d);
 ```
 ![image](https://github.com/hsy0511/nodejs/assets/104752580/97d08b21-c7b5-4b99-97ef-7364576592a1)
+## 제 11강 url의 이해 
+![image](https://github.com/hsy0511/nodejs/assets/104752580/e2798d43-2a5b-4f73-a749-12db3960d1d1)
+
+우리가 사용하는 main.js 파일은 페이지를 바꿀 때 마다 파일이 달라지는 정적인 웹 페이지이다.
+
+정적인 웹 페이지는 100개의 페이지를 만드려면 100개의 파일을 만들어야 한다.
+
+하지만 node js는 동적인 웹 페이지이므로 한 파일에서 여러개의 페이지를 만들어서 보내줄 수 있다. 
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/7cd9cd49-03e5-4ebc-b5e1-29bb8889c588)
+
+동적인 웹 페이지의 예시 이다.
+
+다른 페이지인데 똑같은 파일에서 받는 것을 볼 수 있다.
+
+파일은 같지만 뒤에있는 t의 값이 달라진다. 
+
+t 값이 다른 이유는 veiwtopic.php 애플리케이션(응용프로그램)이 웹 브라우저에게 서로 다른 페이지를 만들어서 보내는 것이기 때문이다.
+
+이제 url을 이해해보자
+![image](https://github.com/hsy0511/nodejs/assets/104752580/30784bb8-ca7d-422a-9b64-6c64aacf8ce0)
+
+protocol(통신규칙) : 사용자가 서버에 접속할 때 어떤 방식으로 통신 할 것인가에 대한 방법
+
+http(Hypertext Transfer Protocol) : 웹브라우저와 웹서버가 데이터를 주고 받기위한 통신 규칙
+
+host(domain) : 인터넷의 접속되어 있는 컴퓨터
+
+opentutorials.org : 인터넷의 접속되어 있는 컴퓨터 주소
+
+port : 한대의 컴퓨터 안에 여러대의 서버가 있을 수 있는데 클라이언트가 접속했을 때 
+그 중에 어떤 서버와 통신 할지 애매하다. 그럴 때 접속할 때 3000이라고 하면 3000번 
+포트에 연결되어 있는 서버와 통신하게 된다.
+
+웹서버 기본 포트 값은 80이다. http를 사용하고 포트를 안쓰면 80포트 서버랑 연결된다.
+
+path : 컴퓨터 안에 있는 디렉토리 안에 파일
+
+query string : 쿼리 스트링의 값을 변경하면 우리가 웹서버에게 데이터를 전달할 수 있다. (즉, 사용자가 입력 데이터를 전달하는 방법)
+
+쿼리 스트링의 시작은 ?로 시작하기로 약속되어 있고 값과 값은 &를 쓰기로 약속 되어 있고 
+값의 이름과 값은 =로 구분하기로 약속되어 있다.
+
+예제에서 볼 때는 html에 12 페이지를 읽고 싶다는 것이다.
+
+## 제 12강 url을 통해서 입력된 값 사용하기
+- query string 따라서 다른 정보를 보여주는 방법
+![image](https://github.com/hsy0511/nodejs/assets/104752580/f772d590-9d33-43fa-80d1-b2aef0d9712d)
+
+url에 뒤에 id가 쿼리 스트링인데 id가 어디있는지 확인 하기위해 consol.log를 통해 찾는다.
+
+변수 url에 id가 입력 받은 것을 볼 수 있다.
+
+이제 id에 따라서 다른 정보를 만들기 위해서 코드를 변경해준다.
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/1aec753f-6571-4ef8-b88a-e9961fa0ab91)
+
+var url = require('url')을 추가했다. 
+
+require가 요구하다는 뜻인데 여기서는 url이라는 변수에서 url이라는 모듈을 사용할 것이다 라는 뜻이다.
+
+###### ※ 모듈 : node js에서 비슷한 기능을 모아둔 것
+
+url 변수가 겹치면 안되기 때문에 다른 하나의 url은 _url로 바꿀 것이다.
+
+그리고 var queryData = url.parse(_url, true).query;를 추가했다. 
+
+쿼리 데이터 변수는 쿼리 스트링을 추출한다는 뜻이다.
+
+쿼리 스트링을 확인하기 위해 쿼리 데이터에 consol.log를 한다.
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/308b51cb-734e-4ba8-b576-ea319643d509)
+
+id : html이 추출된 것을 볼 수 있다. 그러면 id 즉, 쿼리 스트링을 입력하기 위해서는 queryData.id를 해야한다는 것이다.
+
+확인을 위해서 queryData.id를 로그해보자.
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/9133a8f3-158c-4b68-ac6d-0781b7dba48e)
+
+html이 나온것을 확인할 수 있다.
+
+그러면 이제 파일들을 읽어주는 코드인 response.end(fs.readFileSync(__dirname + _ural); 코드를 지우고
+
+response.end(queryData.id); 코드로 변경하여 id를 읽어 쿼리 스트링 값을 입력받아 사용할 수 있는 것을 볼 수 있다.
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/7db954d2-6160-427a-a52f-1d3c6c870075)
+
+## 제 13강 app 제작 - 동적인 웹페이지 만들기
+동적인 웹 페이지를 만들기 위해서 template이라는 변수를 만들고 변수 안에 1.html에 코드 전체를 복사해온다.
+
+그리고 파일들을 읽어주는 코드를 response.end(queryData.id);에서 response.end(template);으로 변경해준다.
+
+```javascript
+response.end(template);
+```
+
+1.html 코드 에서 바꾸고 싶은 코드는 <title>WEB1 - HTML</title>과 <h2>HTML</h2> 이다.
+
+```javascript
+var title = queryData.id 
+```
+
+위 코드를 추가하여 타이틀 변수는 쿼리스트 값을 입력 받아 나타낼 수 있게 했다.
+
+```javascript
+var template = `
+    <!doctype html>
+<html>
+<head>
+  <title>WEB1 - ${title}</title>
+  <meta charset="utf-8">
+</head>
+<body>
+  <h1><a href="/">WEB</a></h1>
+  <ol>
+    <li><a href="1.html">HTML</a></li>
+    <li><a href="2.css">CSS</a></li>
+    <li><a href="3.javascript">JavaScript</a></li>
+  </ol>
+  <h2>${title}</h2>
+  <p><a href="https://www.w3.org/TR/html5/" target="_blank" title="html5 speicification">Hypertext Markup Language (HTML)</a> is the standard markup language for <strong>creating <u>web</u> pages</strong> and web applications.Web browsers receive HTML documents from a web server or from local storage and render them into multimedia web pages. HTML describes the structure of a web page semantically and originally included cues for the appearance of the document.
+  <img src="coding.jpg" width="100%">
+  </p><p style="margin-top:45px;">HTML elements are the building blocks of HTML pages. With HTML constructs, images and other objects, such as interactive forms, may be embedded into the rendered page. It provides a means to create structured documents by denoting structural semantics for text such as headings, paragraphs, lists, links, quotes and other items. HTML elements are delineated by tags, written using angle brackets.
+  </p>
+</body>
+</html>
+    `;
+```
+
+${tile}을 통해서 변경하고 싶은 코드에 title 변수를 넣어줬다.
+
+```javascript
+  <ol>
+    <li><a href="1.html">HTML</a></li>
+    <li><a href="2.html">CSS</a></li>
+    <li><a href="3.html">JavaScript</a></li>
+  </ol>
+```
+
+위 코드도 바뀐 것을 볼 수 있다.
+
+이렇게 바꾸고 main.js을 실행하면 동적인 웹페이지로 변경된 것을 볼 수 있다.
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/b5d1ef29-d093-4792-97d2-f86aa359b473)
+![image](https://github.com/hsy0511/nodejs/assets/104752580/a815c2b2-1fe3-4a33-a541-862b022af0a4)
+![image](https://github.com/hsy0511/nodejs/assets/104752580/021c3574-ad8d-4721-8562-2d2b55cf919a)
+![image](https://github.com/hsy0511/nodejs/assets/104752580/dcd45146-182e-442b-ae57-d026762fe422)
+
+## 제 14강 node js의 파일읽기 기능
+```javascript
+var fs = require('fs');
+fs.readFile('sample.txt', 'utf-8', function(err, data){
+    console.log(data);
+})
+```
+fs 변수에서 fs 모듈을 사용할 수 있다.
+
+fs.readFile이라는 함수를 사용해서 sample.txt 파일을 utf-8 형태로 읽어 드릴 수 있다.
+
+function(err, data)에서 err는 에러가 발생했을 경우에 err을 나타낸다는 코드이다.
+
+data는 콜백 함수이므로 실행할 때 사용하는 코드이다.
+## 제 15강 app 제작 - 파일을 이용해 본문 구현
