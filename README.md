@@ -288,7 +288,7 @@ response.end(queryData.id); 코드로 변경하여 id를 읽어 쿼리 스트링
 response.end(template);
 ```
 
-1. html 코드에서 바꾸고 싶은 코드는 <title>WEB1 - HTML</title>과 <h2>HTML</h2> 이다.
+1. html 코드에서 바꾸고 싶은 코드는 <title>WEB1 - HTML</title>과 h2 HTML /h2 이다.
 
 ```javascript
 var title = queryData.id 
