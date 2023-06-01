@@ -609,3 +609,76 @@ if(num__ < 2){
 
 ![image](https://github.com/hsy0511/nodejs/assets/104752580/f6e53119-d801-4f04-89b6-915e1b7d766e)
 
+일단 콘솔에서 입력받기 위한 코드를 사용한다.
+
+```javascript
+var args = process.argv;
+console.log(args);
+```
+
+여기서 process.argv가 입력갑을 입력 할 수 있다는 것이다.
+
+egoing이라는 입력값을 넣어서 실행해보았다.
+
+```
+PS C:\Users\MOA\Desktop\web1_html_internet-master\javascript>   node input.js egoing
+```
+
+결과 값이 배열로 나타났다.
+```
+[
+  'C:\\Program Files\\nodejs\\node.exe',
+  'C:\\Users\\MOA\\Desktop\\web1_html_internet-master\\javascript\\input.js',
+  'egoing'
+]
+```
+ 
+
+첫번째 배열에는 nodejs 런타임이 어디에 위치하는지 알려주는 정보이다.
+
+두번째 배열은 실행 시킨 파일에 위치를 알려주는 값이다.
+
+세번째는 입력한 입력값이다.
+
+그리고 k880이라는 입력값을 추가했다.
+
+```
+PS C:\Users\MOA\Desktop\web1_html_internet-master\javascript>   node input.js egoing k880
+
+[
+  'C:\\Program Files\\nodejs\\node.exe',
+  'C:\\Users\\MOA\\Desktop\\web1_html_internet-master\\javascript\\input.js',
+  'egoing',
+  'k880'
+]
+```
+
+이 배열에서 egoing을 나타 내고 싶으면 console.log 값에 배열에 2번째 값을 나타내야한다.
+
+nodejs에서는 배열이 0번째 부터 나타내기 때문이다.
+
+그래서 바꿔서 코드를 실행 시키면 egoing이 나오는 것을 볼 수 있다.
+```javascript
+var args = process.argv;
+console.log(args[2]);
+```
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/01070f9a-ebf0-4596-9f2e-5cd082875fa5)
+
+그리고 이제 if문에서 콘솔 창에 1을 넣으면 true 값이 나와서 C1이 출력되고 2를 넣으면 false가 값이 나와서 C2가 출력되는 코드를 만들 것이다.
+
+```javascript
+if(args[2] === '1'){
+    console.log('C1'); 
+}else{
+    console.log('C2');
+}
+```
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/28af9abf-1abe-4f93-ac1f-b4d2e98b52f8)
+
+콘솔에 입력하는 1은 String 자료형이기 때문에 if(args[2] === '1')을 사용하면 자료형까지 완전히 같기 때문에 true가 되서 C1이 출력된다.
+
+그리고 if(args[2] === '1')에서 1이 2가되면 false가 되기 때문에 C2가 나오게 된다.
+
+이것을 통해서 nodejs에서는 입력값이 달라질 때마다 조건이 달라지는 것을 활용해서 하나에 프로그램이 여러가지 동작을 할 수 있는 것이다.
