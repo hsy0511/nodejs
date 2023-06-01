@@ -592,7 +592,7 @@ var num__ = 3;
 
 if(num__ < 2){
     console.log('맞습니다!')
-}else if(num__ < 3){
+}else if(num__ = 3){
     console.log('2번째에 맞췄습니다!!')
 }else{
     console.log('틀렸습니다!!!')
