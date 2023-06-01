@@ -396,3 +396,71 @@ data 폴더 안에서 쿼리 스트링을 utf-8 형태로 읽어 드린다.
 ![image](https://github.com/hsy0511/nodejs/assets/104752580/c89ab869-5271-424d-aa61-81952b52c1aa)
 ![image](https://github.com/hsy0511/nodejs/assets/104752580/15c5426a-4e7b-41e4-a3d3-cf03abe3e3dc)
 
+## 제 16강 javascript - Boolean
+- Boolean 데이터 타입은 ture와 false로만 값이 나뉜다.
+- true와 false를 변수로 사용할 수 없다.
+
+```javascript
+console.log(true); // true
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/ebdbac83-436a-40ad-b5d9-b909d2676583)
+
+```javascript
+console.log(false); // false
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/94b8446b-6681-4c21-8a2c-831c1ce3b6e7)
+
+- 자료형 데이터를 boolean() 함수로 변환시
+
+1. String 자료형
+```javascript
+var booleanVar1 = Boolean("String"); // true
+console.log(booleanVar1)
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/ebdbac83-436a-40ad-b5d9-b909d2676583)
+
+```javascript
+var booleanVar1_ = Boolean(""); // false
+console.log(booleanVar1_)
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/94b8446b-6681-4c21-8a2c-831c1ce3b6e7)
+
+2. Null 자료형
+```javascript
+var booleanVar2 = Boolean(null); // false
+console.log(booleanVar2)
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/94b8446b-6681-4c21-8a2c-831c1ce3b6e7)
+
+3. number 자료형
+```javascript
+var booleanVar3 = Boolean(4); //true
+console.log(booleanVar3)
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/ebdbac83-436a-40ad-b5d9-b909d2676583)
+
+```javascript
+var booleanVar3_ = Boolean(0); // false
+console.log(booleanVar3_)
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/94b8446b-6681-4c21-8a2c-831c1ce3b6e7)
+
+4. Boolean 자료형
+```javascript
+var booleanVar4 = Boolean(true); //true
+console.log(booleanVar4)
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/ebdbac83-436a-40ad-b5d9-b909d2676583)
+
+```javascript
+var booleanVar4_ = Boolean(false); // false
+console.log(booleanVar4_)
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/94b8446b-6681-4c21-8a2c-831c1ce3b6e7)
+
+## 제 17강 javascript - 비교연산자
+- 이항 연산자 : 왼쪽 항과 오른쪽 항을 연산한다. (사칙연산)
+
+```javascript
+console.log(1+1);
+```
