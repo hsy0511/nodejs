@@ -464,3 +464,52 @@ console.log(booleanVar4_)
 ```javascript
 console.log(1+1);
 ```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/6fd64eee-dc69-4c13-ad25-ca14de914eb2)
+
+- 비교연산자 : 왼쪽 항과 오른쪽 항을 비교했을 때 맞으면 true 틀리면 false를 나타내는 연산자이다.
+
+```javascript
+console.log(1==1); // true
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/b6375488-ecae-43ac-ba34-f5f9de1554af)
+
+
+```javascript
+console.log(1==2); // false
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/5eacde3c-dc1b-4597-a5dd-ea0e54d1958c)
+
+```javascript
+console.log(1!==2); // true
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/b6375488-ecae-43ac-ba34-f5f9de1554af)
+
+```javascript
+console.log(1>2); //false
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/5eacde3c-dc1b-4597-a5dd-ea0e54d1958c)
+
+```javascript
+console.log(1>=2); //false
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/5eacde3c-dc1b-4597-a5dd-ea0e54d1958c)
+
+```javascript
+console.log(1<=2); // ture
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/b6375488-ecae-43ac-ba34-f5f9de1554af)
+
+```javascript
+console.log(1<=2); // ture
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/b6375488-ecae-43ac-ba34-f5f9de1554af)
+
+```javascript
+console.log(1===2); // false 자료형까지 같아야함
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/5eacde3c-dc1b-4597-a5dd-ea0e54d1958c)
+
+```javascript
+console.log(1===1); // true 자료형까지 같아야함
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/b6375488-ecae-43ac-ba34-f5f9de1554af)
