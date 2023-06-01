@@ -513,3 +513,99 @@ console.log(1===2); // false 자료형까지 같아야함
 console.log(1===1); // true 자료형까지 같아야함
 ```
 ![image](https://github.com/hsy0511/nodejs/assets/104752580/b6375488-ecae-43ac-ba34-f5f9de1554af)
+
+## 제 18강 javascrpt - 제어문
+제어문은 프로그램의 순차적인 흐름을 제어해야 할 때 사용하는 실행문입니다.
+
+쉽게 예를 들면 밑에 A,B,C1,D를 출력하는 페이지와 A,B,C2,D를 출력하는 페이지가 있는데 여기서 한페이지에서 어쩔 때는 C1이 나오게 한고 어쩔 때는 C2가 나오게끔 해주는 것이 제어문이라고 할 수 있습니다.
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/4aa2f02d-81b5-46d0-a057-39803f7afeb2)
+
+제어문은 조건문과 반복문 등으로 나뉩니다.
+
+## 제 19강 javascript - 조건문
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/716ff14a-f8fa-4a95-bfa4-95366a199b42)
+
+- 조건문 기본구조
+
+1. if문 기본구조
+```javascript
+if(true){
+    console.log('C1'); 
+}
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/e69cf6a6-24c0-4688-9223-8a826594aa14)
+
+2. if else문 기본구조
+```javascript
+if(true){
+    console.log('C1'); 
+}else{
+    console.log('C2');
+}
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/6ef754d6-366f-46fb-975e-97de426ca503)
+
+3. if else if문 기본구조
+```javascript
+if(true){
+    console.log('C1'); 
+
+}else if(false){
+    console.log('C2');
+
+}else{
+    console.log('C3')
+}
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/ea53fdd2-a1a9-49d4-a1a0-c7f6702bf8ee)
+
+- 조건 값을 넣었을 때 조건문
+
+1. if문
+```javascript
+var num = 3;
+
+if(num>2){
+    console.log('맞습니다!')
+}
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/37f0cf40-1ed0-4454-a3ce-107589143129)
+
+2. if else문
+```javascript
+var num_ = 5;
+
+if(num_>5){
+    console.log('맞습니다!')
+}else{
+    console.log('틀렸습니다!!')
+}
+
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/0cc3f1bb-54d1-408e-bc53-cd57fd5749ff)
+
+3 if else if문
+```javascript
+var num__ = 3;
+
+if(num__ < 2){
+    console.log('맞습니다!')
+}else if(num__ < 3){
+    console.log('2번째에 맞췄습니다!!')
+}else{
+    console.log('틀렸습니다!!!')
+}
+
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/8162f9c0-419e-4565-bcb8-2d4c53908317)
+
+## 제 20강 nodejs - 콘솔에서의 입력값
+프로그램를 출력하는 과정에서 input을 입력 값이라고 하는데 그 입력 값에는 parameter와 argument가 있다.
+
+- parater는 입력되는 정보에 형식
+- argument는 parameter에 맞게 십제로 입력된 값
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/f6e53119-d801-4f04-89b6-915e1b7d766e)
+
