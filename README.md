@@ -682,3 +682,353 @@ if(args[2] === '1'){
 그리고 if(args[2] === '1')에서 1이 1이 아닌 다른 값이 들어가게 되면 false가 되기 때문에 C2가 나오게 된다.
 
 이것을 통해서 nodejs에서는 입력값이 달라질 때마다 조건이 달라지는 것을 활용해서 하나에 프로그램이 여러가지 동작을 할 수 있는 것이다.
+## 제 21강 app제작 - not found
+존재하지 않는 디렉터리 주소에 들어가게 되면 오류 메세지를 사용자에게 전송하는 기능을 만들 것이다.
+```javascript
+ var pathname = url.parse(_url, true).pathname;
+```
+위 코드를 사용하여 실제 쿼리 스트링을 보여준다.
+![image](https://github.com/hsy0511/nodejs/assets/104752580/e55e42ad-c43c-4a8c-aca8-ddc329349ccf)
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/15422468-6423-44ff-815c-689b687fc5f4)
+
+즉 실제 쿼리스트링 값은 /인것을 확인할 수 있다.
+
+이제 pathnoame을 사용하여 존재하지 않은 디렉터리 주소 페이지에 들어가면 오류 메세지를 전송하는 기능을 구현해 볼 갓이다.
+
+조건문을 사용하여 ture이면 페이지를 나타내고 false면 오류 메세지가 나오게 한다.
+```javascript
+  if(pathname === '/'){
+
+    fs.readFile
+    (
+      `data/${queryData.id}`, 'utf-8', function(err, data)
+      {
+        var template = `
+        <!doctype html>
+        <html>
+        <head>
+            <title>WEB1 - ${title}</title>
+            <meta charset="utf-8">
+            </head>
+            <body>
+            <h1><a href="/">WEB</a></h1>
+          <ul>
+          <li><a href="/?id=HTML">HTML</a></li>
+          <li><a href="/?id=CSS">CSS</a></li>
+          <li><a href="/?id=JavaScript">JavaScript</a></li>
+          </ul>
+          <h2>${title}</h2>
+            <p>${data}</p>
+          </body>
+          </html>
+          `;
+          response.writeHead(200);
+          response.end(template);
+        });
+  }else{
+    response.writeHead(404);
+    response.end('Notfound'); 
+  }
+```
+위에서 pathname이 /라고 확인했기 때문에 사용하고 있는 디텍터리 페이지에서는 ture를 반환하여 페이지를 나타낸다.
+
+하지만 /fa처럼 다른 디렉터리 페이지면 404라는 오류로 인식하여 not found 메세지를 나타낸다.
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/e742800d-c6de-4c14-a11b-9dbcd60af32b)
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/84e8dc23-04ff-42ee-94ca-000ac5e19c35)
+
+## 제 22강 app 제작 - 홈페이지 구현
+홈 구현을 안했기 때문에 지금 페이지에서 홈화면이 undefind라고 뜹니다.
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/c03e5a24-3d70-4f46-97f3-8f5cd2c00b3d)
+
+이제 홈화면에 조건문을 사용하여 본문 작성할 것이다.
+
+```javascript
+ if(queryData.id === undefined){
+        fs.readFile(`data/${queryData.id}`, 'utf-8', function(err, data){
+            var title = 'Welcome';
+            var data = 'Hello nodejs';
+              <title>WEB1 - ${title}</title>
+              <meta charset="utf-8">
+              </head>
+              <body>
+              <h1><a href="/">WEB</a></h1>
+            <ul>
+            <li><a href="/?id=HTML">HTML</a></li>
+            <li><a href="/?id=CSS">CSS</a></li>
+            <li><a href="/?id=JavaScript">JavaScript</a></li>
+            </ul>
+            <h2>${title}</h2>
+              <p>${data}</p>
+            </body>
+            </html>
+            `;
+            response.writeHead(200);
+            response.end(template);
+          });        
+      }else{
+        fs.readFile(`data/${queryData.id}`, 'utf-8', function(err, data){
+          var title = queryData.id;
+          var template = `
+        <!doctype html>
+        <html>
+        <head>
+            <title>WEB1 - ${title}</title>
+            <meta charset="utf-8">
+            </head>
+            <body>
+            <h1><a href="/">WEB</a></h1>
+          <ul>
+          <li><a href="/?id=HTML">HTML</a></li>
+          <li><a href="/?id=CSS">CSS</a></li>
+          <li><a href="/?id=JavaScript">JavaScript</a></li>
+          </ul>
+          <h2>${title}</h2>
+            <p>${data}</p>
+          </body>
+          </html>
+          `;
+          response.writeHead(200);
+          response.end(template);
+        });        
+      }
+        
+   }else{
+     response.writeHead(404);
+      response.end('Notfound'); 
+   }
+```
+title 변수를 Welcome으로 지정하고, data 변수를 hello nodejs라고 지정한다.
+
+그리고 조건문에 쿼리데이터가 언파인드면 true로 Welcome과 hello nodejs를 나타내는 페이지가 나타나게 한다.
+
+하지만 언파인드가 아닌 false 다른 페이지를 실행하게 한다.
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/a666c768-9f1c-4f16-b4a3-d52bf488a1cc)
+
+## 제 23강 javascript - 배열
+배열은 여러 개의 데이터를 저장하기 위해서 사용한다.
+
+배열을 생성할 때는 대괄호([])를 사용한다.
+
+배열 안에는 어떤 데이터 타입이든 들어올 수 있다.
+
+```javascript
+var arr = ['A','B','C','D'];
+console.log(arr)
+```
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/4906cdb9-27af-456b-a602-92abdf111d1a)
+
+이때 배열중에 B만 뽑아 오고 싶다면 arr[1]을 하면 된다.
+
+배열에 순서는 0부터 시작한다.
+
+```javascript
+var arr = ['A','B','C','D'];
+console.log(arr[1])
+```
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/4dff391c-9d80-4415-9a9b-50fcbc603a6f)
+
+여기서 B를 L로 바꾸고 싶다면 arr[1] = 'L'이라고 하면 된다.
+
+```javascript
+var arr = ['A','B','C','D'];
+arr[1] = 'L';
+console.log(arr)
+```
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/f141743c-8a62-4796-a6e7-583f6386a66c)
+
+배열의 크기를 확인하고 싶으면 arr.length를 하면 된다.
+
+```javascript
+var arr = ['A','L','C','D'];
+console.log(arr.length)
+```
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/245916d5-6d40-4b24-ab71-496e9e58faa1)
+
+배열에 끝에 데이터를 추가하고 싶으면 arr.push(데이터)를 사용하면 된다.
+
+```javascript
+var arr = ['A','L','C','D'];
+arr.push('E');
+console.log(arr)
+```
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/ab0cac84-3771-49f2-abd3-944d953308c7)
+
+배열에 끝에 데이터를 삭제하고 싶으면 arr.pop()를 사용하면 된다.
+
+```javascript
+var arr = ['A','B','C','D'];
+arr.pop();
+console.log(arr)
+```
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/15cc3d21-ef87-4dd7-acc2-69fe7294807e)
+
+배열에 앞에 데이터를 삭제하고 싶으면 arr.shift(데이터)를 사용하면 된다.
+
+
+```javascript
+var arr = ['A','B','C','D'];
+arr.shift();
+console.log(arr)
+```
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/3e1358d1-ab2e-42e5-ace6-6392f2edd92d)
+
+배열에 앞에 데이터를 추가하고 싶으면 arr.unshift()를 사용하면 된다.
+
+```javascript
+var arr = ['A','B','C','D'];
+arr.unshift('L');
+console.log(arr)
+```
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/7049049a-a74b-47e3-934a-839407649f09)
+
+배열 위치를 정해서 추가, 삭제하고 싶은 경우에는 splice를 사용하면된다.
+
+splice는 arr.splice(시작할 배열 데이터,삭제할 데이터 개수 (삭제 안할거면 0), 추가할 데이터들)로 사용할 수 있다.
+
+```javascript
+var arr = [1, 5, 7];
+arr.splice(1, 0, 2, 3, 4);  
+console.log(arr)
+```
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/9b5a03b1-b4d6-4e71-b1ac-1c97bdd41ea7)
+
+```javascript
+var arr = [1, 5, 7];
+arr.splice(1, 2);           
+console.log(arr)
+```
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/ebf76a64-794a-4200-b97c-0fa06b5418f5)
+
+## 제 24강 javascript - 반복문
+자바스크립트에서 반복문은 크게 while, do while, for, for in, for of 5가지로 나뉜다.
+
+- while
+
+while문은 조건에 만족하지 않을 때 까지 반복 실행 시켜줍니다.
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/8688e7f2-0aa6-47d9-8c31-eacc804d4c0a)
+
+#### 예제 
+```javascript
+var i = 1;
+
+while (i < 10) { 
+    console.log(i);
+    i++; 
+}
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/b787a632-51e9-436b-9dd0-3f2d54879cac)
+
+i가 조건에 만족하지 않을 때 까지 반복 실행함.
+
+이때 i++처럼 결과를 변경하는 조건식이 없으면 계속 반복문이 실행됨.
+
+- do while
+
+do while문은 while문과 다르게 반복문을 한번 실행한 뒤에 표현식을 검사합니다.
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/ae8fde1e-1a56-49c0-a846-017dcd750a84)
+
+#### 예제
+```javascript
+var i = 1, j = 1;
+
+while (i > 3) { 
+    console.log("i : <br>");
+    i++;
+
+}
+do { 
+    console.log("j : <br>");
+    j++;
+
+} while (j > 3);
+```
+i가 조건에 만족하지 않을 때 까지 반복 실행함.
+
+예제는 조건에 만족하지 않기 때문에 do를 한번 실행하여 값을 출력함 
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/fe96f7bd-e8ee-478a-a82f-ca9192f01910)
+
+- for
+
+for문은 while 문과는 달리 자체적으로 초기식, 표현식, 증감식을 모두 포함하고 있는 반복문입니다.
+
+while문 보다 간결하게 표현할 수 있음
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/474edd26-3e25-4d38-8387-5a1187dc5a5f)
+
+#### 예제
+```javascript
+for (var i = 1; i < 10; i++) {
+    console.log(i);
+
+}
+```
+
+표현식안에 변수 조건 증감식을 모두 포함하여 실행하는 것을 볼 수 있다.
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/a90cc669-bbff-4e63-929c-be443e1188b7)
+
+- for in
+
+for in 문은 해당 객체의 모든 열거할 수 있는 속성을 순회할 수 있도록 해줍니다.
+###### ※ 순회 : 하나의 속성씩 방문하는 것
+
+#### 예제
+```javascript
+var arr = [3, 4, 5];
+
+for (var i in arr) { 
+    console.log(i);
+
+}
+
+var obj = { name : "이순신", age : 20 };
+
+for (var i in obj) {
+    console.log(i);
+
+}
+```
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/3b7bf82a-47be-4493-a447-4a647f55d87c)
+
+배열에 있는 3,4,5를 나타내는것이 아니라 배열에 인덱스 속성(번호)를 나타내는 것을 볼 수 있다.
+
+그냥 표현식에서도 name과 age를 나타내는 것을 볼 수 있다.
+
+- for of
+
+for of 문은 반복할 수 있는 객체를 순회할 수 있도록 해줍니다.
+
+자바스크립트에서 반복할 수 있는 객체에는 Array, Map, Set, arguments 등이 있다.
+
+#### 예제
+```javascript
+var arr = [3, 4, 5];
+
+for (var value of arr) {
+    console.log(value);
+
+}
+```
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/9ff562c7-32d6-4725-b6c9-8b7869b2d505)
+
+배열에 있는 객체인 3,4,5를 나타내는 것을 볼 수 있다.
