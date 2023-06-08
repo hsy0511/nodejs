@@ -1259,4 +1259,94 @@ console.log(jk(2,3));
 즉, return에 의미는 함수를 반환하는 동시에 그 함수는 return을 만나면 함수가 종료된다는 뜻을 가지고 있다.
 
 ## 제 30강 app 제작 - 함수를 이용하여 정리하기
+함수를 사용하여 중복되는 데이터를 정리할 것이다.
+
+```javascript
+ var template =  `
+  <!doctype html>
+  <html>
+  <head>
+    <title>WEB1 - ${title}</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <h1><a href="/">WEB</a></h1>
+    ${list}
+    ${body}
+  </body>
+  </html>
+  `;
+```
+
+이 코드가 중복되기 때문에 함수를 이용하여 간결하게 정리할 것이다.
+
+```javascript
+function templateHTML(title, list, body){
+  return `
+  <!doctype html>
+  <html>
+  <head>
+    <title>WEB1 - ${title}</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <h1><a href="/">WEB</a></h1>
+    ${list}
+    ${body}
+  </body>
+  </html>
+  `;
+}
+```
+
+templateHTML 이라는 함수를 만들어서 똑같은 내용을 리턴한다.
+
+매개변수는 title과 list를 사용하여 변수들을 전달한다.
+
+그리고 template이 있던 자리에는 함수를 호출한다.
+
+```javascript
+var template = templateHTML(title, list, `<h2>${title}</h2>${data}`);
+```
+
+함수를 통해 더욱 간결하게 코드가 완성되었다.
+
+다른 중복되는 코드도 비슷하게 만든다.
+```javascript
+var list = 
+var list = '<ul>';
+  var i = 0;
+  while(i < filelist.length){
+    list = list + `<li><a href="/?id=${filelist[i]}">${filelist[i]}</a></li>`;
+    i = i + 1;
+  }
+  list = list+'</ul>';
+```
+
+이 코드도 중복되기 때문에 함수를 이용하여 정리해 준다.
+
+```javascript
+function templateList(filelist){
+  var list = '<ul>';
+  var i = 0;
+  while(i < filelist.length){
+    list = list + `<li><a href="/?id=${filelist[i]}">${filelist[i]}</a></li>`;
+    i = i + 1;
+  }
+  list = list+'</ul>';
+  return list;
+}
+```
+
+templateList 라는 함수를 만들어서 똑같은 내용을 리턴한다.
+
+매개변수는 filelist를 사용하여 변수을 전달한다.
+
+그리고 list가 있던 자리에는 함수를 호출한다.
+
+```javascript
+var list = templateList(filelist);
+```
+
+함수를 통해서 간결하게 만든 코드가 잘 적용 되었는지 웹페이지를 실행하여 확인한다.
 
