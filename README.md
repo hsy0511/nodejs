@@ -1034,6 +1034,10 @@ for (var value of arr) {
 배열에 있는 객체인 3,4,5를 나타내는 것을 볼 수 있다.
 
 ## 제 25강 nodejs에서 파일목록 알아내기
+- data 폴더
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/5fdcc996-2273-4b1b-a164-81823e22dfc2)
+
 readdir() 함수를 이용해 폴더를 읽어오면서 목록태그를 더 편리하게 사용할 수 있다.
 
 ```javascript
