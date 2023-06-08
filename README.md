@@ -1032,3 +1032,82 @@ for (var value of arr) {
 ![image](https://github.com/hsy0511/nodejs/assets/104752580/9ff562c7-32d6-4725-b6c9-8b7869b2d505)
 
 배열에 있는 객체인 3,4,5를 나타내는 것을 볼 수 있다.
+
+## 제 25강 nodejs에서 파일목록 알아내기
+readdir() 함수를 이용해 폴더를 읽어오면서 목록태그를 더 편리하게 사용할 수 있다.
+
+```javascript
+var testFolder = './data';
+var fs = require('fs');
+fs.readdir(testFolder, function(err, filelist){
+    console.log(filelist);
+})
+```
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/4c2755e5-92ad-4e88-9e5b-6530dd49b845)
+
+readdir() 함수를 사용하여 data 폴더에 있는 파일들을 읽어온다.
+
+콘솔값을 봤을 때 css, html, javascript를 data 폴더에서 읽어낸 것을 볼 수 있다.
+
+## 제 26강 app 제작 - 글목록 출력하기
+위에서 했던 폴더를 읽어오는 readdir 함수를 사용해서 글목록을 출력할 것이다.
+
+원래 있던 목록태그를 살펴본다.
+
+```javascript
+ <ul>
+          <li><a href="/?id=HTML">HTML</a></li>
+          <li><a href="/?id=CSS">CSS</a></li>
+          <li><a href="/?id=JavaScript">JavaScript</a></li>
+</ul>
+```
+
+목록이 HTML, CSS, JavaScript가 있는 것을 볼 수 있다. 
+
+이제 HTML, CSS, Javascript가 있는 폴더를 읽어온다.
+```javascript
+fs.readdir('./data', function(err, filelist){
+
+console.log(filelist);
+
+}
+```
+![image](https://github.com/hsy0511/nodejs/assets/104752580/5304236a-43bb-4ce3-832e-403d9a8fc6fb)
+
+data 폴더를 읽어드려 HTML, CSS, JavaScript를 읽어온 것을 볼 수 있다.
+
+이제 3개의 목록을 반복 시켜 더 간단하게 만들어보자
+
+```javascript
+fs.readdir('./data', function(err, filelist){
+
+var list = '<ul>';
+var i = 0;
+while(i < filelist){
+list = list + `<li>< a href = "/?id=${filelist[i]}">${filelist[i]}</li>`
+i = i + 1;          
+
+}
+
+list = list +'</ul>';
+```
+
+list 변수에 ul 태그를 넣고, i의 값은 0으로 지정해준다.
+
+그리고 while문을 시작하여 i가 filelist 만큼 반복 시켜준다.
+
+list의 값을 다시 list + `<li>< a href = "/?id=${filelist[i]}">${filelist[i]}</li>`를 더한 값으로 지정한다.
+
+filelist의 i번째 인덱스를 나타낸다.
+
+filelist의 값이 3이니까 반복이 끝나면 0~2까지 반복 되었을 것이다. 
+
+인덱스 번호는 0부터 시작이므로 0이 HTML, 1이 CSS 2가 JavaScript가 되므로 목록을 잘 지정해 준 것을 볼 수  있다.
+
+마지막으로 list를 </ul> 태그와 더하여 목록태그를 닫는 것까지 완성하면 글 목록을 출력할 수 있다.
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/62953f2b-918a-4aaa-87a9-00f967f43b75)
+![image](https://github.com/hsy0511/nodejs/assets/104752580/3ce05a15-df82-4a37-89a5-0e5a6aa5d429)
+![image](https://github.com/hsy0511/nodejs/assets/104752580/1a146f67-4606-4134-bb48-865849d18c4f)
+
