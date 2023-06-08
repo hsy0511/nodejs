@@ -1136,6 +1136,8 @@ function 함수이름(파라미터){
 f123();
 ```
 
+![image](https://github.com/hsy0511/nodejs/assets/104752580/33251e31-00e8-43ac-a29b-8294b1355cc4)
+
 ## 제 28강 javascript - 함수의 입력
 함수를 만들 때 입력값을 만들어 더 사용성 있게 사용할 수 있다.
 
