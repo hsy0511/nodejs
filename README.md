@@ -1371,7 +1371,7 @@ var app = http.createServer(function(request,response){
  
         fs.readdir('./data', function(error, filelist){
           var title = 'Welcome';
-          var description = 'Hello, Node.js';
+          var data = 'Hello, Node.js';
           var list = '<ul>';
           var i = 0;
           while(i < filelist.length){
@@ -1390,7 +1390,7 @@ var app = http.createServer(function(request,response){
             <h1><a href="/">WEB</a></h1>
             ${list}
             <h2>${title}</h2>
-            <p>${description}</p>
+            <p>${data}</p>
           </body>
           </html>
           `;
@@ -1403,7 +1403,7 @@ var app = http.createServer(function(request,response){
       } else {
         fs.readdir('./data', function(error, filelist){
           var title = 'Welcome';
-          var description = 'Hello, Node.js';
+          var data = 'Hello, Node.js';
           var list = '<ul>';
           var i = 0;
           while(i < filelist.length){
@@ -1411,7 +1411,7 @@ var app = http.createServer(function(request,response){
             i = i + 1;
           }
           list = list+'</ul>';
-          fs.readFile(`data/${queryData.id}`, 'utf8', function(err, description){
+          fs.readFile(`data/${queryData.id}`, 'utf8', function(err, data){
             var title = queryData.id;
             var template = `
             <!doctype html>
@@ -1424,7 +1424,7 @@ var app = http.createServer(function(request,response){
               <h1><a href="/">WEB</a></h1>
               ${list}
               <h2>${title}</h2>
-              <p>${description}</p>
+              <p>${data}</p>
             </body>
             </html>
             `;
