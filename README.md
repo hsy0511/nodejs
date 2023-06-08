@@ -1111,3 +1111,152 @@ filelist의 값이 3이니까 반복이 끝나면 0~2까지 반복 되었을 것
 ![image](https://github.com/hsy0511/nodejs/assets/104752580/3ce05a15-df82-4a37-89a5-0e5a6aa5d429)
 ![image](https://github.com/hsy0511/nodejs/assets/104752580/1a146f67-4606-4134-bb48-865849d18c4f)
 
+## 제 27강 javascript - 함수의 기본 문법
+함수를 사용하는 목적은 코드에서 유용하게 사용되고 더 가독성이 좋게 사용하기 위함이다.
+
+```javascript
+function f123(){
+    console.log(1);
+    console.log(2);
+    console.log(3);
+}
+```
+
+함수의 기본문법은 이렇게 사용된다. 
+
+```
+function 함수이름(파라미터){
+함수에서 실행할 코드 
+}
+```
+
+함수 호출방법은 함수이름과 파라미터를 같이 사용하면 된다.
+
+```javascript
+f123();
+```
+
+## 제 28강 javascript - 함수의 입력
+함수를 만들 때 입력값을 만들어 더 사용성 있게 사용할 수 있다.
+
+먼저 자바스크립트에서 제공하는 math.round() 함수를 확인 해보자 
+```javascript
+
+console.log(Math.round(1.6));
+
+console.log(Math.round(1.4));
+```
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/548203bc-eecb-4a5d-8d29-066f03cc6e72)
+
+round는 반올림을 해주는 함수이다..
+
+round 함수 입력값에 1.6이 들어가면 2가 나오는 것을 볼 수 있고, 1.4가 들어가면 1이 되는 것을 볼 수 있다. 
+
+이제 우리가 함수에 입력값을 넣어 만들어 보자
+
+```javascript
+sum(2,4);
+```
+
+이 sum() 함수를 실행하면 두 숫자를 더하는 함수를 만들 것이다.
+
+```javascrip
+function sum(first){
+    console.log(first)
+    
+sum(2,4);
+}
+```
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/511c1302-d37b-42a2-b878-daa01aaeeec6)
+
+일단 첫번째로 함수의 파라미터(매개변수) 값을 first로 지정해준다.
+
+```javascript
+function sum(first, second){
+    console.log(second)
+  
+sum(2,4);
+}
+```
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/54a172d4-4981-455c-b878-425b055d9d89)
+
+두번째로는 함수의 파라미터의 second라는 파라미터 값을 추가해서 지정한다.
+
+이제 파라미터 값들을 더해준다.
+
+```javascript
+function sum(first, second){
+    console.log(first+second)
+}
+
+sum(2,4);
+```
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/b62f8f8f-2051-440e-9587-073eb4ae52cc)
+
+이때 sum(2,4)에서 2,4는 Argument(인수)이다. 
+###### ※  Argument(인수) : 함수 혹은 메서드를 호출할 때, 전달 혹은 입력되는 실제 값
+
+## 제 29강 javascript - 함수의 출력
+우리가 배운 함수는 console.log를 함수안에 사용하기 때문에 다방면적으로 사용이 불가하다.
+
+```javascript
+function sum(first, second){
+    console.log(first+second)
+}
+
+sum(2,4);
+```
+
+이 함수는 sum(2,4);만 써도 함수안에 console.log가 있기 때문에 콘솔창에 나타나지만 
+
+math.round(1.6) 함수는 console없이 사용하면 나타나지 않는다.
+
+하지만 sum(2,4) 함수는 파일에서 실행하거나 이메일에서 실행하는 등 다방면적으로 사용이 불가능하다.
+
+그런데 math.round() 함수는 다방면에서 사용이 가능하다.
+
+이제 우리도 sum(2,4)을 다방면적으로 사용할 수 있게 하려면 함수 안에 console.log가 아닌 return을 사용하면 된다.
+
+```javascript
+function sum(first, second){
+    return first+second
+}
+
+sum(2,4);
+```
+이렇게 실행 시키면 아무것도 나타나지 않는다. return을 사용했기 때문이고 나타내기 위해서는 console.log를 사용해야 한다.
+
+```javascript
+function sum(first, second){
+    return first+second
+}
+
+console.log(sum(2,4));
+```
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/de42bf77-f366-4435-9eeb-9cfb378b86ea)
+
+그리고 리턴은 다른 의미도 있다.
+
+```javascript
+function jk(a,b){
+    console.log('r');
+    return a+b
+    console.log('v');
+}
+
+console.log(jk(2,3));
+```
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/6dc984df-16fa-45f7-8dbb-6d505f7bdb32)
+
+예제에서 함수를 실행시켰을 때 리턴 이후에 console이 실행이 안되는 것을 볼 수 있다.
+
+즉, return에 의미는 함수를 반환하는 동시에 그 함수는 return을 만나면 함수가 종료된다는 뜻을 가지고 있다.
+
+## 제 30강 app 제작 - 함수를 이용하여 정리하기
+
