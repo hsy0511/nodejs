@@ -1655,6 +1655,21 @@ name : main.js 별명, status : 실행 여부, cpu와 메모리를 얼마나 소
 
 정상적으로 실행된 것을 볼 수 있다.
 
+### vscode로 pm2 실행
+1. window 탐색기에서 window powershell을 관리자 권한으로 실행한다.
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/04132873-23b7-41c6-9b86-b05ea8d1c03c)
+
+2. executionpolicy 입력
+3. Restricted가 나오면, set-executionpolicy unrestricted 입력
+4. y입력
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/a8e35972-5126-44d6-a048-9eacdd0b9af1)
+
+5. 실행
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/8029e757-ea17-4ca1-84c2-9b3b96e373ce)
+
 ### 현재 pm2를 통해 실행되고 있는 프로그램 확인
 ```
 pm2 monit
