@@ -1623,3 +1623,87 @@ slowfunc 함수에서 입력받는 값을 변수 a의 값으로 만들었던 익
 
 ## 제 33강 Node.js의 패키지 매니저와 PM2
 
+패키지 매니저는  소프트웨어 설치, 업그레이드, 구성 및 사용을 자동화하는 데 사용되는 시스템 또는 도구 이다.
+
+우리가 사용할 패키지 매니저는 npm이라는 nodejs pakage manager이다.
+
+npm을 통해서 pm2라는 프로그램을 간단하게 사용해 볼 것이다.(콘솔창이나 cmd에서 사용)
+
+### 관련 사이트
+![image](https://github.com/hsy0511/nodejs/assets/104752580/0c618d1a-5ebd-4435-adc8-7cd86fad3336)
+
+
+### npm을 통해 pm2 설치
+```
+npm install pm2 -g
+```
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/349b4725-bca3-4fca-9c61-48a34e9a8f2c)
+
+### pm2로 main.js 실행
+```
+pm2 start main.js
+```
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/ed60ac3e-73be-4532-9661-edb766168074)
+
+name : main.js 별명, status : 실행 여부, cpu와 메모리를 얼마나 소비하고 있는지 알려주는 표가 나옴.
+
+실행이 잘 되었는지 확이하기 위해서 홈페이지를 들어가 본다.
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/292ba64a-31dc-4999-88e8-5d8e41ed54a3)
+
+정상적으로 실행된 것을 볼 수 있다.
+
+### 현재 pm2를 통해 실행되고 있는 프로그램 확인
+```
+pm2 monit
+```
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/0314a4d0-d5ca-407a-8ea8-e6ff35e5fecb)
+
+main.js만 사용하고 있는 것을 볼 수 있다.
+
+monit에서 나오고 싶으면 q를 누르면 된다.
+
+### 현재 실행중인 프로그램을 목록으로 확인
+```
+pm2 list
+```
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/ffc073b2-059d-4b3a-8c9a-9d48cb05b922)
+
+### 실행중인 프로그램 끄기
+```
+pm2 stop main
+```
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/2be19fe8-289a-46e7-a6e7-11e182e7a146)
+
+별명을 stop 시킨다.
+
+### 실행중인 프로그램 코드를 변경 후 실행
+```
+pm2 start main.js --watch
+```
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/b482fc6f-4c02-4393-b49b-a736740de09e)
+
+코드를 바꾸면 원래 실행하고 있는 프로그램을 끈 후 다시 실행시켜야 하지만 --whtch를 사용하면 리로드만 해도 변경이 된다.
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/5705e59d-7ef0-410d-81fb-126f9c8eff9e)
+
+변경된 것을 볼 수 있다. 
+
+### 변경 사항 및 오류 확인
+```
+pm2 log
+```
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/05dade78-78a7-47a4-b9fd-530bf42ba99f)
+
+코드를 변경했다.
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/d1e20956-94e2-4f4b-9b14-3e47514e7947)
+
+코드가 변경되었다는 것을 보여주는 것을 볼 수 있다.
