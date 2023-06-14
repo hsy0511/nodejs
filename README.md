@@ -1576,6 +1576,8 @@ fs.readFile('sample.txt', 'utf8', function(err,result){
 console.log('C');
 ```
 
+![image](https://github.com/hsy0511/nodejs/assets/104752580/036b45ea-453f-4634-ae89-ffa97e704060)
+
 비동기적으로 파일의 내용을 불러올 때는 먼저 실행이 가능하다. 
 
 즉, 비동기적으로 사용할 때는 동시 작업이 가능하다.
@@ -1606,7 +1608,7 @@ var a = function(){
 a 라는 변수에 익명함수를 만들어 값을 저장해줍니다.
 
 function slowfunc(callback){
-    callback;
+    callback();
 }
 slowfunc라는 함수를 만든 후 매개변수를 callback으로 지정합니다.
  
@@ -1655,7 +1657,7 @@ name : main.js 별명, status : 실행 여부, cpu와 메모리를 얼마나 소
 
 정상적으로 실행된 것을 볼 수 있다.
 
-### vscode로 pm2 실행
+### vscode로 작업하시는 분들 pm2 실행
 1. window 탐색기에서 window powershell을 관리자 권한으로 실행한다.
 
 ![image](https://github.com/hsy0511/nodejs/assets/104752580/04132873-23b7-41c6-9b86-b05ea8d1c03c)
