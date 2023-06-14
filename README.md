@@ -1622,3 +1622,4 @@ slowfunc 함수에서 입력받는 값을 변수 a의 값으로 만들었던 익
 ![image](https://github.com/hsy0511/nodejs/assets/104752580/3dc614aa-8b92-42cb-aa50-6133d2b4ddf7)
 
 ## 제 33강 Node.js의 패키지 매니저와 PM2
+
