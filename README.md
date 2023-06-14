@@ -1519,3 +1519,101 @@ var app = http.createServer(function(request,response){
 });
 app.listen(3000);
 ```
+
+## 제 31강 동기와 비동기
+- 동기
+
+서버에서 요청을 보냈을 때 응답이 돌아와야 다음 동작을 수행할 수 있다. 즉 A작업이 모두 진행 될때까지 B작업은 대기해야한다.
+
+- 비동기
+
+서버에서 요청을 보냈을 때 응답 상태와 상관없이 다음 동작을 수행 할 수 있다. 즉 A작업이 시작하면 동시에 B작업이 실행된다. A작업은 결과값이 나오는대로 출력된다.
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/88537b34-dd0e-4a84-abf6-e2a74cc71863)
+
+- sample.txt
+```
+B
+```
+
+- 예제(동기)
+
+```javascript
+var fs = require('fs');
+ 
+console.log('A');
+
+var result = fs.readFileSync('sample.txt', 'utf8');
+
+console.log(result);
+
+console.log('C');
+```
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/181eda85-9fc3-488f-9067-04364836aefa)
+
+동기적으로 파일의 내용을 불러올 때는 순서대로 출력된다.
+
+즉, 동기적으로 사용할 때는 동시 작업이 불가능하다.
+-예제(비동기)
+
+```javascript
+var fs = require('fs');
+
+console.log('A');
+
+fs.readFile('sample.txt', 'utf8', function(err,result){
+
+    console.log(result);
+
+});
+
+console.log('C');
+```
+
+비동기적으로 파일의 내용을 불러올 때는 먼저 실행이 가능하다. 
+
+즉, 비동기적으로 사용할 때는 동시 작업이 가능하다.
+
+## 제 32강 javascript - callback
+일단 callback 함수에 개념을 알아보면 파라미터로 전달받은 함수를 말합니다.
+
+즉, 파라미터로 콜백함수를 전달받고 함수 내부에서 필요할 때 콜백함수를 호출할 수 있습니다.
+
+- 예제 1 (익명함수)
+
+```javascript
+var a = function (){
+    console.log('A');
+}
+```
+
+함수명을 선언하지 않고 함수를 만들면 그것은 익명함수가 된다.
+
+그리고 익명함수는 변수명메 저장된 값이된다. 
+
+- 예제 2 (callback)
+
+```javascript
+var a = function(){
+    console.log('A');
+}
+a 라는 변수에 익명함수를 만들어 값을 저장해줍니다.
+
+function slowfunc(callback){
+    callback;
+}
+slowfunc라는 함수를 만든 후 매개변수를 callback으로 지정합니다.
+ 
+slowfunc(a);
+slowfunc 함수의 입력받는 값을 a로 지정합니다.
+
+```
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/9c185b07-0726-430b-907d-5c14f388c9e1)
+
+slowfunc 함수에서 입력받는 값을 변수 a의 값으로 만들었던 익명 함수가 반환됩니다.
+
+![image](https://github.com/hsy0511/nodejs/assets/104752580/3dc614aa-8b92-42cb-aa50-6133d2b4ddf7)
+
+## 제 33강 Node.js의 패키지 매니저와 PM2
